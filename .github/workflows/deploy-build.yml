@@ -15,11 +15,9 @@ jobs:
 
             - name: Installer les dépendances Node.js
               run: npm ci
-              working-directory: ./
 
             - name: Build des assets
               run: npm run build
-              working-directory: ./
 
             - name: Déployer via SCP
               uses: appleboy/scp-action@v0.1.7
