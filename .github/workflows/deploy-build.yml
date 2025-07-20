@@ -20,11 +20,11 @@ jobs:
 
             - name: Installer les dépendances
               run: npm ci
-              working-directory: ./maVitrine
+              working-directory: ./
 
             - name: Build des assets
               run: npm run build
-              working-directory: ./maVitrine
+              working-directory: ./
 
             - name: Déployer via SFTP
               uses: appleboy/scp-action@v0.1.4
