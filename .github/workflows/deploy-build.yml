@@ -10,10 +10,16 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            - name: Checkout
+            - name: Checkout du dépôt
               uses: actions/checkout@v3
 
-            - name: Déploiement via SFTP vers OVH
+            - name: Installer les dépendances Node.js
+              run: npm ci
+
+            - name: Build des assets
+              run: npm run build
+
+            - name: Déployer via SCP
               uses: appleboy/scp-action@v0.1.7
               with:
                   host: ${{ secrets.SFTPHOST }}
@@ -21,4 +27,4 @@ jobs:
                   password: ${{ secrets.SFTPPASSWORD }}
                   port: ${{ secrets.SFTPPORT }}
                   source: "public/build/*"
-                  target: "/home/bellees/maVitrine/public/build/"
+                  target: "/home/bellees/maVitrine/public/build"
