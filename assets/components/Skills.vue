@@ -58,7 +58,7 @@
                         <span>SEO</span>
                     </div>
                     <div class="flex flex-col items-center space-y-2">
-                        <i class="fas fa-sass text-blue-500 text-4xl"></i>
+                        <i class="fa-brands text-pink-400 text-4xl fa-sass"></i>
                         <span>SASS</span>
                     </div>
                     <div class="flex flex-col items-center space-y-2">
