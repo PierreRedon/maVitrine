@@ -13,13 +13,13 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v3
 
-            - name: Deployer sur OVH via SFTP
-              uses: pressidium/lftp-deploy-action@v1.0.0
+            - name: Déploiement SFTP vers OVH
+              uses: SamKirkland/FTP-Deploy-Action@v4.3.4
               with:
-                  host: ${{ secrets.SFTPHOST }}
-                  port: ${{ secrets.SFTPPORT }}
+                  server: ${{ secrets.SFTPHOST }}
                   username: ${{ secrets.SFTPUSER }}
                   password: ${{ secrets.SFTPPASSWORD }}
-                  localDir: ./public/build
-                  remoteDir: /home/bellees/maVitrine/public/build
-                  onlyNewer: true
+                  protocol: sftp
+                  port: ${{ secrets.SFTPPORT }}
+                  local-dir: public/build
+                  server-dir: /home/bellees/maVitrine/public/build/
