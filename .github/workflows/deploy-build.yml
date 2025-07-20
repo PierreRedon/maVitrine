@@ -13,13 +13,12 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v3
 
-            - name: Déploiement SFTP vers OVH
-              uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+            - name: Déploiement via SFTP vers OVH
+              uses: appleboy/scp-action@v0.1.7
               with:
-                  server: ${{ secrets.SFTPHOST }}
+                  host: ${{ secrets.SFTPHOST }}
                   username: ${{ secrets.SFTPUSER }}
                   password: ${{ secrets.SFTPPASSWORD }}
-                  protocol: sftp
                   port: ${{ secrets.SFTPPORT }}
-                  local-dir: public/build
-                  server-dir: /home/bellees/maVitrine/public/build/
+                  source: "public/build/*"
+                  target: "/home/bellees/maVitrine/public/build/"
