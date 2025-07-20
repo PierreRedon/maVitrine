@@ -62,7 +62,7 @@
                         <span>SASS</span>
                     </div>
                     <div class="flex flex-col items-center space-y-2">
-                        <i class="fas fa-paint-brush text-pink-400 text-4xl"></i>
+                        <i class="fas fa-paint-brush text-yellow-400 text-4xl"></i>
                         <span>Figma</span>
                     </div>
                 </div>
