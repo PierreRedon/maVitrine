@@ -10,21 +10,28 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            - name: Checkout du dépôt
+            - name: Cloner le dépôt
               uses: actions/checkout@v3
 
-            - name: Installer les dépendances Node.js
+            - name: Installer Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: '18'
+
+            - name: Installer les dépendances
               run: npm ci
+              working-directory: ./maVitrine
 
             - name: Build des assets
               run: npm run build
+              working-directory: ./maVitrine
 
-            - name: Déployer via SCP
-              uses: appleboy/scp-action@v0.1.7
+            - name: Déployer via SFTP
+              uses: appleboy/scp-action@v0.1.4
               with:
-                  host: ${{ secrets.SFTPHOST }}
-                  username: ${{ secrets.SFTPUSER }}
-                  password: ${{ secrets.SFTPPASSWORD }}
-                  port: ${{ secrets.SFTPPORT }}
-                  source: "public/build/*"
-                  target: "/home/bellees/maVitrine/public/build"
+                  host: ${{ secrets.SFTP_HOST }}
+                  username: ${{ secrets.SFTP_USERNAME }}
+                  password: ${{ secrets.SFTP_PASSWORD }}
+                  port: ${{ secrets.SFTP_PORT }}
+                  source: "maVitrine/public/build/*"
+                  target: ${{ secrets.SFTP_TARGET }}

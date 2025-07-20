@@ -1,0 +1,13 @@
+RewriteEngine On
+
+# 🔒 Redirection vers HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# 🌐 Redirection www vers sans-www pour .com
+RewriteCond %{HTTP_HOST} ^www\.pierre-redon\.com$ [NC]
+RewriteRule ^ https://pierre-redon.com%{REQUEST_URI} [L,R=301]
+
+# 🌐 Redirection www vers sans-www pour .fr
+RewriteCond %{HTTP_HOST} ^www\.pierre-redon\.fr$ [NC]
+RewriteRule ^ https://pierre-redon.fr%{REQUEST_URI} [L,R=301]

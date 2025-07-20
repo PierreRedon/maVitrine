@@ -1,0 +1,7 @@
+# Pas de redirection vers .fr
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www\.pierre-redon\.com [NC]
+RewriteRule ^(.*)$ https://pierre-redon.com/$1 [L,R=301]
+
+RewriteCond %{HTTP_HOST} ^www\.pierre-redon\.fr [NC]
+RewriteRule ^(.*)$ https://pierre-redon.fr/$1 [L,R=301]
