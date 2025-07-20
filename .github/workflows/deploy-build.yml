@@ -20,11 +20,9 @@ jobs:
 
             - name: Installer les dépendances
               run: npm ci
-              working-directory: ./
 
             - name: Build des assets
               run: npm run build
-              working-directory: ./
 
             - name: Déployer via SFTP
               uses: appleboy/scp-action@v0.1.4
@@ -33,5 +31,5 @@ jobs:
                   username: ${{ secrets.SFTP_USERNAME }}
                   password: ${{ secrets.SFTP_PASSWORD }}
                   port: ${{ secrets.SFTP_PORT }}
-                  source: "maVitrine/public/build/*"
+                  source: "public/build/*"
                   target: ${{ secrets.SFTP_TARGET }}
