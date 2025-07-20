@@ -1,4 +1,25 @@
-name: deploy-build.yml
+name: Deploiement OVH SFTP
+
 on:
+    push:
+        branches:
+            - main
 
 jobs:
+    deploy:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+
+            - name: Deployer sur OVH via SFTP
+              uses: pressidium/lftp-deploy-action@v1.0.0
+              with:
+                  host: ${{ secrets.SFTPHOST }}
+                  port: ${{ secrets.SFTPPORT }}
+                  username: ${{ secrets.SFTPUSER }}
+                  password: ${{ secrets.SFTPPASSWORD }}
+                  localDir: ./public/build
+                  remoteDir: /home/bellees/maVitrine/public/build
+                  onlyNewer: true
