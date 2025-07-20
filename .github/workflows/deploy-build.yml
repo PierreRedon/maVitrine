@@ -15,11 +15,11 @@ jobs:
 
             - name: Installer les dépendances Node.js
               run: npm ci
-              working-directory: ./
+              working-directory: ./maVitrine
 
             - name: Build des assets
               run: npm run build
-              working-directory: ./
+              working-directory: ./maVitrine
 
             - name: Déployer via SCP
               uses: appleboy/scp-action@v0.1.7
@@ -28,5 +28,5 @@ jobs:
                   username: ${{ secrets.SFTPUSER }}
                   password: ${{ secrets.SFTPPASSWORD }}
                   port: ${{ secrets.SFTPPORT }}
-                  source: "public/build/*"
+                  source: "maVitrine/public/build/*"
                   target: "/home/bellees/maVitrine/public/build"
